@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Todo;
 use Illuminate\Http\Request;
 
-class Todocontroller extends Controller
+class TodoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -28,7 +28,7 @@ class Todocontroller extends Controller
         $data= json_decode(file_get_contents('php://input'),true);
 
         $todo= new Todo;
-        $todo->memo =$data['memo'];
+        $todo->memo =$data[`memo`];
         $todo->save();
         return Todo::all();
     }
@@ -53,7 +53,7 @@ class Todocontroller extends Controller
      */
     public function update(Request $request, Todo $todo)
     {
-        $todo->title=  $request-> title;
+        $todo->title=  $request->title;
         $todo->status= $request->status;
         $todo->memo=   $request->memo;
 
